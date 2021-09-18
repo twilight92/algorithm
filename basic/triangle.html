@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        // 가장 큰 값(max)이 나머지 두 값의 합보다 작아야 삼각형이 가능하다.
+
+        // 전체값 tot에서 가장 큰 값 max를 뺐을 때의 값이 max보다 같거나 작으면 삼각형이 이루어질 수 없다.
+
+        function solution(a, b, c) {
+            let answer = "YES",
+                max;
+            let tot = a + b + c;
+            if (a > b) max = a;
+            else max = b;
+            if (c > max) max = c;
+            if (tot - max <= max) answer = "NO";
+            return answer;
+        }
+
+        console.log(solution(13, 33, 17));
+    </script>
+</body>
+
+</html>
