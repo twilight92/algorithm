@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        function solutionMin(arr) {
+            // arr을 넣을 경우 출력 NaN
+            // 배열을 넘길때는 스프레드 연산자로 펼쳐준다 ...arr - arr[0], arr[1] ...
+            let result = Math.min(...arr);
+            return result;
+        }
+
+        function solutionMinApply(arr) {
+            // 첫번째 인자 객체를 넘겨야함 this - null
+            let result = Math.min.apply(null, arr);
+            return result;
+        }
+
+        function solutionMax(arr) {
+            let result = Math.max(...arr);
+            return result;
+        }
+
+        let arr = [5, 7, 1, 3, 2, 9, 11];
+        console.log(solutionMin(arr));
+        console.log(solutionMinApply(arr));
+        console.log(solutionMax(arr));
+    </script>
+</body>
+
+</html>
