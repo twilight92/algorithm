@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        // n이 12로 딱 떨어지지 않을 경우 한 다스를 추가해야 한다.
+
+        // 소수점이 있는 경우 올려버리는 Math 올림 함수 이용.
+        function solution(n) {
+            let answer;
+            answer = Math.ceil(n / 12);
+            return answer;
+        }
+
+        console.log(solution(178));
+    </script>
+</body>
+
+</html>
