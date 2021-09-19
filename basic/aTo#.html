@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        // 첫 번째 방법
+        function solution(s) {
+            let answer = "";
+            for (let x of s) {
+                if (x == 'A') answer += '#';
+                else answer += x;
+            }
+            return answer;
+        }
+
+        // 두 번째 방법
+        function solution2(s) {
+            // 문자열은 주소참조가 아닌 값이 복사되어 s와 answer는 다른 값
+            let answer = s;
+
+            // g가 없는 경우 첫번 째 A만 바뀐다 B#NANA
+            // answer = answer.replace(/A/, "#");
+            // 다 바꿔야 하기 때문에 global 전역을 뜻하는 g 추가
+            answer = answer.replace(/A/g, "#");
+            return answer;
+        }
+
+        let str = "BANANA";
+        console.log(solution(str));
+    </script>
+</body>
+
+</html>
