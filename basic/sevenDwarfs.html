@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        function solution(arr) {
+            // 얕은 복사 answer나 arr이나 메모리의 똑같은 배열을 가리키고 있다.(주소만 복사)
+            let answer = arr;
+
+            // 9명의 총 합을 구한다.
+            let sum = answer.reduce((a, b) => a + b, 0);
+            for (let i = 0; i < 8; i++) {
+                for (let j = i + 1; j < 9; j++) {
+                    if ((sum - (answer[i] + answer[j])) == 100) {
+                        // splice를 이용하여 i와 j를 제거한다.
+                        // i, j번째의 값을 하나 제거하라
+                        // 순서를 뒤집을 경우 i가 지워졌을 때 당겨져서 뒤의 순서 j를 먼저 지운다.
+                        answer.splice(j, 1);
+                        answer.splice(i, 1);
+                    }
+                }
+            }
+            return answer;
+        }
+
+        let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+        console.log(solution(arr));
+    </script>
+</body>
+
+</html>
