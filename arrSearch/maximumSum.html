@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        function solution(arr) {
+            /* 
+                answer는 최대값을 구해야 하기 때문에 아주 작은 값으로 셋팅
+                 answer는 최종적으로 제일 큰 값을 저장하는 변수이므로 초기화를 제일 작은 값으로 해서 최초 Math.max(answer, sum1, sum2) 비교시 answer값은 무시(sum1,
+                 sum2보다 당연히 작으므로)되고, sum1, sum2 중 큰 값이 answer가 되도록
+             */
+            let answer = Number.MIN_SAFE_INTEGER;
+
+            let n = arr.length;
+
+            /* 
+                sum1과 sum2를 동시에 0으로 초기화
+                각자 초기화 한 것과 같다.
+                let sum1=0;
+                let sum2=0;
+
+                - sum1=sum2=0은 sum1과 sum2를 동시에 0으로 초기화
+                - sum1, sum2=0은 sum1은 기존 값 그대로 두고, sum2만 0으로 초기화
+            */
+            let sum1 = sum2 = 0;
+
+            // 행 탐색, 열 탐색을 이중 for문으로 한다.
+            // 가로 세로 각각의 합 구하기
+            for (let i = 0; i < n; i++) {
+                sum1 = sum2 = 0;
+                for (let j = 0; j < n; j++) {
+                    sum1 += arr[i][j]; // 행 탐색
+                    sum2 += arr[j][i]; // 열 탐색
+                }
+                answer = Math.max(answer, sum1, sum2);
+            }
+
+            // 스코프 범위때문에 다시 초기화
+            // 대각선 구하기
+            sum1 = sum2 = 0;
+            for (let i = 0; i < n; i++) {
+                sum1 += arr[i][i];
+                sum2 += arr[i][n - i - 1];
+            }
+            answer = Math.max(answer, sum1, sum2);
+            return answer;
+        }
+
+        let arr = [
+            [10, 13, 10, 12, 15],
+            [12, 39, 30, 23, 11],
+            [11, 25, 50, 53, 15],
+            [19, 27, 29, 37, 27],
+            [19, 13, 30, 13, 19]
+        ];
+        console.log(solution(arr));
+    </script>
+</body>
+
+</html>
